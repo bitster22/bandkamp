@@ -4,21 +4,9 @@ from .models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    # id = serializers.IntegerField(read_only=True)
-    # username = serializers.CharField(
-    #     validators=[
-    #         UniqueValidator(
-    #             queryset=User.objects.all(),
-    #             message="A user with that username already exists.",
-    #         )
-    #     ],
-    # )
     email = serializers.EmailField(
         validators=[UniqueValidator(queryset=User.objects.all())],
     )
-    # password = serializers.CharField(write_only=True)
-    # full_name = serializers.CharField(max_length=50, required=False)
-    # artistic_name = serializers.CharField(max_length=50)
 
     class Meta:
         model = User
